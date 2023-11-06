@@ -28,10 +28,21 @@ function addFlex(parent, num, style) {
   }
 }
 
+function getRandomColor() {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  return "rgb(" + r + "," + g + "," + b + ")";
+}
+
 function changeColor(e) {
   if (e.type == "mouseover" && !mouseDown) return;
   //console.log(e);
-  e.target.style.backgroundColor = INK;
+  if (rainBow) {
+    e.target.style.backgroundColor = getRandomColor();
+  } else {
+    e.target.style.backgroundColor = INK;
+  }
 }
 
 function initBoard(size) {
