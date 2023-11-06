@@ -8,6 +8,9 @@ document.body.onmouseup = () => {
 const INK = "blue";
 const DEFAULT_SIZE = 16;
 const main_container = document.getElementById("main-container");
+let rainBow = false;
+let shading = false;
+let lighting = false;
 
 function addFlex(parent, num, style) {
   /*
@@ -59,8 +62,70 @@ function updateBoard() {
   initBoard(size);
 }
 
+function updateSwitch() {
+  rb_item = document.getElementById("rainBow");
+  sd_item = document.getElementById("shading");
+  lt_item = document.getElementById("lighting");
+
+  if (rainBow) rb_item.classList.add("btn_on");
+  else rb_item.classList.remove("btn_on");
+
+  if (shading) sd_item.classList.add("btn_on");
+  else sd_item.classList.remove("btn_on");
+
+  if (lighting) lt_item.classList.add("btn_on");
+  else lt_item.classList.remove("btn_on");
+}
+
+//change to rainbow ink
+function switchRainbow() {
+  if (rainBow) {
+    rainBow = false;
+  } else {
+    rainBow = true;
+    shading = false;
+    lighting = false;
+  }
+
+  updateSwitch();
+}
+
+//change to shading ink
+function switchShading() {
+  if (shading) {
+    shading = false;
+  } else {
+    rainBow = false;
+    shading = true;
+    lighting = false;
+  }
+
+  updateSwitch();
+}
+
+//change to lighting ink
+function switchlighting() {
+  if (lighting) {
+    lighting = false;
+  } else {
+    rainBow = false;
+    shading = false;
+    lighting = true;
+  }
+
+  updateSwitch();
+}
+
 initBoard(DEFAULT_SIZE);
 
 //size setter
 btn_size_setter = document.getElementById("Set_size");
 btn_size_setter.onclick = () => updateBoard();
+
+//ink switch listenner
+Rainbow_switch = document.getElementById("rainBow");
+Rainbow_switch.onclick = () => switchRainbow();
+Shading_switch = document.getElementById("shading");
+Shading_switch.onclick = () => switchShading();
+Lighting_switch = document.getElementById("lighting");
+Lighting_switch.onclick = () => switchlighting();

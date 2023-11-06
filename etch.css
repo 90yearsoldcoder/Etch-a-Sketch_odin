@@ -5,6 +5,7 @@ body {
 
 #control_pannel {
   display: flex;
+  flex-direction: column;
   flex: 0 0 auto;
   width: 100px;
 }
@@ -12,6 +13,16 @@ body {
 #Set_size {
   width: 100px;
   height: 50px;
+}
+
+.btn_pen {
+  width: 100px;
+  height: 50px;
+  background-color: aliceblue;
+}
+
+.btn_on {
+  background-color: aqua;
 }
 
 .content_container {
