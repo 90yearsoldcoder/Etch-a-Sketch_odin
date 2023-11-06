@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  justify-content: space-around;
+}
+
+#control_pannel {
+  display: flex;
+  flex: 0 0 auto;
+  width: 100px;
+}
+
+#Set_size {
+  width: 100px;
+  height: 50px;
+}
+
+.content_container {
+  display: flex;
+  width: 800px;
+  height: 800px;
+}
+
+.row {
+  display: flex;
+  flex: 1;
+}
+
+.grid {
+  display: flex;
+  border: 2px solid black;
+  flex: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.grid:hover {
+  background-color: blue;
+}
