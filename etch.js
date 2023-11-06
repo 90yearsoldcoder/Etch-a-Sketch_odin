@@ -35,11 +35,28 @@ function getRandomColor() {
   return "rgb(" + r + "," + g + "," + b + ")";
 }
 
+function AdjustColor(curColor, percentage) {
+  //curColor: string, rgb
+  //percentage: float([-100,100]), a percentage changing for the brightness
+  let [r, g, b] = curColor.match(/\d+/g).map(Number);
+  r = Math.min(255, Math.max(0, r + r * (percentage / 100)));
+  g = Math.min(255, Math.max(0, g + g * (percentage / 100)));
+  b = Math.min(255, Math.max(0, b + b * (percentage / 100)));
+
+  return "rgb(" + r + "," + g + "," + b + ")";
+}
+
 function changeColor(e) {
   if (e.type == "mouseover" && !mouseDown) return;
   //console.log(e);
   if (rainBow) {
     e.target.style.backgroundColor = getRandomColor();
+  } else if (shading) {
+    let curColor = window.getComputedStyle(e.target).backgroundColor;
+    e.target.style.backgroundColor = AdjustColor(curColor, -10);
+  } else if (lighting) {
+    let curColor = window.getComputedStyle(e.target).backgroundColor;
+    e.target.style.backgroundColor = AdjustColor(curColor, 10);
   } else {
     e.target.style.backgroundColor = INK;
   }
